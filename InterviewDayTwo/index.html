@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodeDayTwo</title>
+    <style>
+        .space{margin-left:5%;}
+        h3{margin-left:1%;}
+    </style>
+</head>
+<body>
+    <h3>What are the different types of HTTP requests?</h3> 
+    <p class="space">HTTP (Hypertext Transfer Protocol) specifies a collection of request methods to 
+    specify what action is to be performed on a particular resource. <br><br>The most 
+    commonly used HTTP request methods are GET, POST, PUT, PATCH, and 
+    DELETE. These are equivalent to the CRUD operations (create, read, update, and 
+    delete). </p>
+    <p class="space">GET: GET request is used to read/retrieve data from a web server. GET returns an 
+    HTTP status code of 200 (OK) if the data is successfully retrieved from the server.</p>
+    <p class="space">POST: POST request is used to send data (file, form data, etc.) to the server. On 
+    successful creation, it returns an HTTP status code of 201.</p> 
+    <p class="space">PUT: A PUT request is used to modify the data on the server. It replaces the entire 
+    content at a particular location with data that is passed in the body payload.<br><br> If there 
+    are no resources that match the request, it will generate one.</p> 
+    <p class="space">PATCH: PATCH is similar to PUT request, but the only difference is, it modifies a 
+    part of the data. It will only replace the content that you want to update.</p> 
+    <p class="space">DELETE: A DELETE request is used to delete the data on the server at a specified 
+    location.</p> 
+
+    <h3>Explain the concept of middleware in Node.js.</h3> 
+    <p class="space">Express.js is a routing and Middleware framework for handling the different 
+    routing of the webpage and it works between the request and response cycle.</p> 
+    <p class="space">Middleware gets executed after the server receives the request and before the 
+    controller actions send the response.</p> 
+    <p class="space">Middleware has the access to the request object, responses object, and next, it can 
+    process the request before the server send a response. <br><br>An Express-based 
+    application is a series of middleware function calls.</p> 
+    <p class="space">Middleware Chaining: Middleware can be chained from one to another, Hence 
+    creating a chain of functions that are executed in order.<br><br> The last function sends the 
+    response back to the browser.</p> 
+    <p class="space">So, before sending the response back to the browser the different middleware processes the request.</p> 
+    <p class="space">The next() function in the express is responsible for calling the next middleware 
+    function if there is one.</p> 
+    <p class="space">app.get(path, (req, res, next) => {}, (req, res) => {})</p> 
+    
+    <h3>Explain CORS.</h3> 
+    <p class="space">CORS : (Cross-Origin Resource Sharing) is a mechanism by which data or any 
+    other resource of a site could be shared intentionally to a third party website when 
+    there is a need.<br><br> Generally, access to resources that are residing in a third party site 
+    is restricted by the browser clients for security purposes.</p> 
+    <p class="space">// cors - npm i cors </p>
+    <code>
+       <p class="space">const cors = require("cors")</p> 
+       <p class="space">app.use(cors())</p>
+       <p class="space">app.get('/default',defau,(req,res)=>{</p>
+       <p class="space">console.log("default")</p>
+       <p class="space">})</p>
+    </code> 
+
+    <h3>What is Express? How does it help you to create a backend application?</h3> 
+    <p class="space">Express.js: Express is a small framework that sits on top of Node.js’s web server 
+    functionality to simplify its APIs and add helpful new features.<br><br> It makes it easier to 
+    organize your application’s functionality with middleware and routing.<br><br> It adds 
+    helpful utilities to Node.js’s HTTP objects. It facilitates the rendering of dynamic 
+    HTTP objects.</p>
+    <p class="space">More features than Node.js</p> 
+    <p class="space">1. It is used to build web-apps using approaches and principles of Node.js.</p> 
+    <p class="space">2. Routing is provided.</p> 
+    <p class="space">3. It requires less coding time.</p>
+    <p class="space">4. Uses middleware for the arrangement of functions systematically server-side.</p> 
+    <p class="space">5. import by const express = require ("express")</p> 
+
+    <h3>Explain min 5 status codes gets used in Backend development.</h3>
+    <p class="space">An HTTP status code is a message a website's server sends to the browser to 
+    indicate whether or not that request can be fulfilled.<br><br> Status codes specs are set by 
+    the W3C. Status codes are embedded in the HTTP header of a page to tell the 
+    browser the result of its request.</p> 
+    <p class="space">1. 102 PROCESSING Processing 200 OK OK </p>
+    <p class="space">2. 400 BAD_REQUEST Bad Request </p>
+    <p class="space">3. 401 UNAUTHORIZED Unauthorized </p>
+    <p class="space">4. 402 PAYMENT_REQUIRED Payment Required </p>
+    <p class="space">5. 403 FORBIDDEN Forbidden </p>
+    <p class="space">6. 404 NOT_FOUND Not Found </p>
+    <p class="space">7. 500 INTERNAL_SERVER_ERROR Internal Server Error </p>
+    <p class="space">8. 503 - Service Unavailable</p> 
+
+    <h3>Difference between HTTP and HTTPS. </h3>
+    <p class="space">HTTPS is HTTP with encryption. The only difference between the two protocols is 
+    that HTTPS uses TLS (SSL) to encrypt normal HTTP requests and responses. <br><br>As a 
+    result, HTTPS is far more secure than HTTP. A website that uses HTTP has http:// 
+    in its URL, while a website that uses HTTPS has https://. Some difference of http 
+    and https;</p> 
+
+    <h3>What are JWT tokens?</h3> 
+    <p class="space">JSON web token (JWT), pronounced "jot", is an open standard (RFC 7519) that 
+    defines a compact and self-contained way for securely transmitting information 
+    between parties as a JSON object. <br><br>Again, JWT is a standard, meaning that all 
+    JWTs are tokens, but not all tokens are JWTs. when we logged-in somewhere , 
+    they provide us a unique token. <br><br>which helps us to access through it token is 
+    provided only when the registered data and login data are matching.</p> 
+    <p class="space">Ex:-facebook </p>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Node Interview Preparation Day 3</title>
+    </head>
+    <style>
+    body {
+  background-color: linen;
+}
+
+h1 {
+  color: maroon;
+  margin-left: 40px;
+}
+
+pre{
+    color: blue;
+}
+</style>
+    <body>
+        <h1>1.How do you create a simple Express.js application?</h1>
+        <pre>       
+            const express = require('express');
+            const server = express();
+
+            server.get('/data',(req,res)=>{
+                res.send('Hello!');
+            })
+
+            server.listen(3000,()=>{
+                console.log("App is running");
+            })
+        </pre>
+        <h1>2.Implementation of all type of exports in backend application</h1>
+        <pre>
+            data.js file
+            function res(req,res){ 
+                res.send("default exports") 
+            } 
+            function named(req,res) { 
+                res.send('named exports') 
+            } 
+            module.res = res;
+            module.exports = {named};
+
+            server.js file
+            const def = require('./data/default');
+            const nam = require('./data/named');
+            const express = require('express');
+            const app = express();
+            
+            app.get('def',(req,res)=>{
+                res.send(def);
+                res.send(nam);
+            })
+        </pre>
+        <h1>3.Create a middleware which will be applicable to all the routes</h1>
+        <pre>
+            calculation.js file
+            const calculation = (a,b) => a+b;
+            module.exports={
+                calculation
+            }
+
+            server.js file 
+            const express = require('express');
+            const {calculation} = require('./modules/calculation')
+            const cors = require('cors');
+            const app = express();
+            app.use(cors());
+
+            const middleware = (req,res,next) =>{
+                const result = calculation(2,3);
+                if(result === 5){
+                    next();
+                }
+                else{
+                    res.status(400).send("You are not allowed")
+                }
+                console.log("Got a login request");
+                next();
+            }
+
+            app.get('/home',cors(),(req,res)=>{
+                res.json({
+                    "employee":[
+                        {
+                            "name":"Vishal",
+                        }
+                    ]
+                })
+            })
+
+            app.get('/api',middleware,(req,res)=>{
+                console.log("Logged In");
+                res.send("Logged In");
+            })
+
+            app.get('/info',middleware,(req,res)=>{
+                console.log("Logged In Info");
+                res.send("Logged In Info");
+            })
+
+            app.listen('5000',()=>{
+                console.log("App Started...");
+            })
+        </pre>
+        <h1>4.Implement CORS.</h1>
+        <pre>
+            var express = require('express')
+            var cors = require('cors')
+            var app = express()
+            
+            app.use(cors())
+            
+            app.get('/products', function (req, res, next) {
+            res.json({msg: 'This is CORS-enabled for all origins!'})
+            })
+            
+            app.listen(80, function () {
+            console.log('CORS-enabled web server listening on port 80')
+            })
+        </pre>
+    </body>
+</html>
